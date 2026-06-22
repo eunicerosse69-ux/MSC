@@ -42,6 +42,24 @@ const RATES = {
   CNY: { USD: 0.1378, EUR: 0.1267, GBP: 0.1088, CAD: 0.185, AED: 0.506, CNY: 1 },
 };
 
+// Utility function to calculate next departure date based on day of week
+const getNextDepartureDate = (dayOfWeek, frequency = 'Weekly') => {
+  const today = new Date();
+  const todayDay = today.getDay(); // 0 = Sunday, 1 = Monday, etc.
+  const adjustedTarget = dayOfWeek === 0 ? 0 : dayOfWeek; // 0 = Monday in our system, but getDay has Sunday as 0
+  const jsDay = adjustedTarget === 0 ? 1 : adjustedTarget + 1; // Convert to JS day of week
+  
+  let daysUntilNext = (jsDay - todayDay + 7) % 7;
+  if (daysUntilNext === 0) daysUntilNext = 7; // If today is the departure day, next is 7 days later
+  
+  const nextDate = new Date(today);
+  nextDate.setDate(nextDate.getDate() + daysUntilNext);
+  
+  const monthShort = nextDate.toLocaleString('en-US', { month: 'short' });
+  const day = nextDate.getDate();
+  return `${monthShort} ${day}`;
+};
+
 const VALID_IMAGE_1 = 'https://cdn.pixabay.com/photo/2014/12/08/12/19/container-ship-560789_1280.jpg';
 const COMPANY_SHORT = 'MSC';
 const COMPANY_NAME = 'MSC EUROPEAN & SHORT SEA NETWORK VIENNA';
@@ -97,7 +115,7 @@ const routes = [
     desc: 'Rotterdam · Antwerp · Hamburg → Montreal · Toronto · Vancouver',
     transit: '12 days',
     freq: 'Weekly',
-    next: 'Jul 15',
+    nextDayOfWeek: 0,
   },
   {
     flags: ['🇨🇳', '🇺🇸'],
@@ -105,7 +123,7 @@ const routes = [
     desc: 'Shanghai · Shenzhen · Busan → Long Beach · Seattle · New York',
     transit: '14 days',
     freq: '2× /wk',
-    next: 'Jul 16',
+    nextDayOfWeek: 1,
   },
   {
     flags: ['🇦🇪', '🇩🇪'],
@@ -113,7 +131,7 @@ const routes = [
     desc: 'Jebel Ali · Port Said · Aqaba → Hamburg · Bremen · Rotterdam',
     transit: '22 days',
     freq: 'Weekly',
-    next: 'Jul 17',
+    nextDayOfWeek: 2,
   },
   {
     flags: ['🇸🇬', '🇬🇧'],
@@ -121,7 +139,7 @@ const routes = [
     desc: 'Singapore · Colombo · Port Klang → Felixstowe · Southampton',
     transit: '25 days',
     freq: 'Weekly',
-    next: 'Jul 18',
+    nextDayOfWeek: 3,
   },
   {
     flags: ['🇿🇦', '🇧🇪'],
@@ -129,7 +147,7 @@ const routes = [
     desc: 'Cape Town · Durban · Maputo → Antwerp · Hamburg · Marseille',
     transit: '21 days',
     freq: 'Weekly',
-    next: 'Jul 19',
+    nextDayOfWeek: 4,
   },
   {
     flags: ['🇧🇷', '🇮🇹'],
@@ -137,7 +155,7 @@ const routes = [
     desc: 'Santos · Buenos Aires · Montevideo → Genoa · Barcelona · Piraeus',
     transit: '19 days',
     freq: 'Weekly',
-    next: 'Jul 20',
+    nextDayOfWeek: 5,
   },
 ];
 
@@ -776,7 +794,7 @@ function App() {
                   </div>
                   <div className="rm">
                     <span>Next</span>
-                    <strong>{route.next}</strong>
+                    <strong>{getNextDepartureDate(route.nextDayOfWeek, route.freq)}</strong>
                   </div>
                 </div>
               </div>
