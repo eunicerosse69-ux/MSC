@@ -816,7 +816,6 @@ function App() {
                 </div>
                 <address>{office.address}</address>
                 <div className="office-contact">
-                  <span>📞 <a href="#">{office.phone}</a></span>
                   <span>✉️ <a href="#">{office.email}</a></span>
                   <span style={{ fontSize: 11, color: 'var(--mid)' }}>{office.hours}</span>
                 </div>
