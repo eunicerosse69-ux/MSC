@@ -97,7 +97,7 @@ const routes = [
     desc: 'Rotterdam · Antwerp · Hamburg → Montreal · Toronto · Vancouver',
     transit: '12 days',
     freq: 'Weekly',
-    next: 'Jun 25',
+    next: 'Jul 15',
   },
   {
     flags: ['🇨🇳', '🇺🇸'],
@@ -105,7 +105,7 @@ const routes = [
     desc: 'Shanghai · Shenzhen · Busan → Long Beach · Seattle · New York',
     transit: '14 days',
     freq: '2× /wk',
-    next: 'Jun 22',
+    next: 'Jul 16',
   },
   {
     flags: ['🇦🇪', '🇩🇪'],
@@ -113,7 +113,7 @@ const routes = [
     desc: 'Jebel Ali · Port Said · Aqaba → Hamburg · Bremen · Rotterdam',
     transit: '22 days',
     freq: 'Weekly',
-    next: 'Jun 26',
+    next: 'Jul 17',
   },
   {
     flags: ['🇸🇬', '🇬🇧'],
@@ -121,7 +121,7 @@ const routes = [
     desc: 'Singapore · Colombo · Port Klang → Felixstowe · Southampton',
     transit: '25 days',
     freq: 'Weekly',
-    next: 'Jun 23',
+    next: 'Jul 18',
   },
   {
     flags: ['🇿🇦', '🇧🇪'],
@@ -129,7 +129,7 @@ const routes = [
     desc: 'Cape Town · Durban · Maputo → Antwerp · Hamburg · Marseille',
     transit: '21 days',
     freq: 'Weekly',
-    next: 'Jun 25',
+    next: 'Jul 19',
   },
   {
     flags: ['🇧🇷', '🇮🇹'],
@@ -137,7 +137,7 @@ const routes = [
     desc: 'Santos · Buenos Aires · Montevideo → Genoa · Barcelona · Piraeus',
     transit: '19 days',
     freq: 'Weekly',
-    next: 'Jun 27',
+    next: 'Jul 20',
   },
 ];
 
