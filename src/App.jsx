@@ -3,9 +3,9 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 
 const TRACK_DEMO = {
-  'MSC-4402-NG': {
+  'MSC-4402-DE': {
     vessel: 'MV MSC Sovereign',
-    origin: 'Lagos, Nigeria',
+    origin: 'Durban, South Africa',
     dest: 'Rotterdam, Netherlands',
     loc: 'Mid-Atlantic — 1,820 nm from Rotterdam',
     eta: 'June 27, 2026',
@@ -22,8 +22,8 @@ const TRACK_DEMO = {
   'MSC-9022-AE': {
     vessel: 'MV MSC Horizon',
     origin: 'Jebel Ali, UAE',
-    dest: 'Lagos, Nigeria',
-    loc: 'Apapa Port — Awaiting crane allocation',
+    dest: 'Jeddah, Saudi Arabia',
+    loc: 'Red Sea — approaching Jeddah port',
     eta: 'Arrived June 19, 2026',
     status: 'Customs Clearance',
   },
@@ -36,10 +36,10 @@ const TRACK_DEMO = {
 };
 
 const RATES = {
-  GBP: { USD: 1.266, EUR: 1.165, NGN: 2050, AED: 4.65, CNY: 9.19, GBP: 1 },
-  NGN: { USD: 0.000617, EUR: 0.000568, GBP: 0.000488, AED: 0.00227, CNY: 0.00448, NGN: 1 },
-  AED: { USD: 0.272, EUR: 0.251, GBP: 0.215, NGN: 441, CNY: 1.978, AED: 1 },
-  CNY: { USD: 0.1378, EUR: 0.1267, GBP: 0.1088, NGN: 223.1, AED: 0.506, CNY: 1 },
+  GBP: { USD: 1.266, EUR: 1.165, CAD: 1.70, AED: 4.65, CNY: 9.19, GBP: 1 },
+  CAD: { USD: 0.74, EUR: 0.69, GBP: 0.59, AED: 2.75, CNY: 5.40, CAD: 1 },
+  AED: { USD: 0.272, EUR: 0.251, GBP: 0.215, CAD: 0.363, CNY: 1.978, AED: 1 },
+  CNY: { USD: 0.1378, EUR: 0.1267, GBP: 0.1088, CAD: 0.185, AED: 0.506, CNY: 1 },
 };
 
 const VALID_IMAGE_1 = 'https://cdn.pixabay.com/photo/2014/12/08/12/19/container-ship-560789_1280.jpg';
@@ -92,9 +92,9 @@ const services = [
 
 const routes = [
   {
-    flags: ['�🇺', '🇨🇦'],
+    flags: ['🇪🇺', '🇨🇦'],
     title: 'Europe — Canada',
-    desc: 'Rotterdam · Antwerp · Hamburg → Vancouver · Toronto · Montreal',
+    desc: 'Rotterdam · Antwerp · Hamburg → Montreal · Toronto · Vancouver',
     transit: '12 days',
     freq: 'Weekly',
     next: 'Jun 25',
@@ -410,7 +410,7 @@ function App() {
         <div className="ticker-label">LIVE</div>
         <div className="ticker-wrap">
           <div className="ticker-inner">
-            {['Lagos → Rotterdam', 'Shanghai → Long Beach', 'Dubai → Hamburg', 'Singapore → New York', 'Cape Town → Antwerp', 'Mumbai → Rotterdam', 'Tokyo → Los Angeles', 'Busan → Seattle'].map((item, idx) => (
+            {['Vienna → Canada', 'Shanghai → Long Beach', 'Dubai → Hamburg', 'Singapore → New York', 'Cape Town → Antwerp', 'Mumbai → Rotterdam', 'Tokyo → Los Angeles', 'Busan → Seattle'].map((item, idx) => (
               <span key={idx}>
                 {item}
                 {idx < 7 ? <span className="sep">▸</span> : null}
@@ -858,7 +858,7 @@ function App() {
           <div style={{ fontSize: 11, color: '#ffa552', fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 8 }}>Freight Payments</div>
           <h2 style={{ fontSize: 26, fontWeight: 800, color: '#fff', marginBottom: 8 }}>Currency Exchange Estimate</h2>
           <p style={{ color: '#a8c4f0', fontSize: 14.5, maxWidth: 480, margin: '0 auto' }}>
-            Estimate freight invoice values in USD, EUR, GBP, NGN, AED or CNY before wiring payment.
+            Estimate freight invoice values in USD, EUR, GBP, CAD, AED or CNY before wiring payment.
           </p>
           <div className="fx-card">
             <div className="fx-row">
@@ -866,8 +866,8 @@ function App() {
                 <label className="fx-label" htmlFor="fx-from-a">From</label>
                 <div className="fx-wrap">
                   <select id="fx-from-c" value={fromCurrency} onChange={(event) => setFromCurrency(event.target.value)}>
-                    {['USD', 'EUR', 'GBP', 'NGN', 'AED', 'CNY'].map((code) => (
-                      <option key={code} value={code}>{code === 'USD' ? '🇺🇸 USD' : code === 'EUR' ? '🇪🇺 EUR' : code === 'GBP' ? '🇬🇧 GBP' : code === 'NGN' ? '🇳🇬 NGN' : code === 'AED' ? '🇦🇪 AED' : '🇨🇳 CNY'}</option>
+                    {['USD', 'EUR', 'GBP', 'CAD', 'AED', 'CNY'].map((code) => (
+                      <option key={code} value={code}>{code === 'USD' ? '🇺🇸 USD' : code === 'EUR' ? '🇪🇺 EUR' : code === 'GBP' ? '🇬🇧 GBP' : code === 'CAD' ? '🇨🇦 CAD' : code === 'AED' ? '🇦🇪 AED' : '🇨🇳 CNY'}</option>
                     ))}
                   </select>
                   <input
@@ -889,8 +889,8 @@ function App() {
                 <label className="fx-label" htmlFor="fx-to-a">To</label>
                 <div className="fx-wrap">
                   <select id="fx-to-c" value={toCurrency} onChange={(event) => setToCurrency(event.target.value)}>
-                    {['EUR', 'USD', 'GBP', 'NGN', 'AED', 'CNY'].map((code) => (
-                      <option key={code} value={code}>{code === 'USD' ? '🇺🇸 USD' : code === 'EUR' ? '🇪🇺 EUR' : code === 'GBP' ? '🇬🇧 GBP' : code === 'NGN' ? '🇳🇬 NGN' : code === 'AED' ? '🇦🇪 AED' : '🇨🇳 CNY'}</option>
+                    {['EUR', 'USD', 'GBP', 'CAD', 'AED', 'CNY'].map((code) => (
+                      <option key={code} value={code}>{code === 'USD' ? '🇺🇸 USD' : code === 'EUR' ? '🇪🇺 EUR' : code === 'GBP' ? '🇬🇧 GBP' : code === 'CAD' ? '🇨🇦 CAD' : code === 'AED' ? '🇦🇪 AED' : '🇨🇳 CNY'}</option>
                     ))}
                   </select>
                   <input id="fx-to-a" type="text" value={converted} readOnly />
@@ -898,7 +898,7 @@ function App() {
               </div>
             </div>
             <div className="fx-rate">Indicative rate: <b>1 {fromCurrency} = {rate.toFixed(4)} {toCurrency}</b></div>
-            <div className="fx-note">For freight invoice estimation only. Final rate set by your financial institution at settlement. {COMPANY_SHORT} accepts USD, EUR, GBP and NGN.</div>
+            <div className="fx-note">For freight invoice estimation only. Final rate set by your financial institution at settlement. {COMPANY_SHORT} accepts USD, EUR, GBP, CAD, AED and CNY.</div>
           </div>
         </div>
       </section>
