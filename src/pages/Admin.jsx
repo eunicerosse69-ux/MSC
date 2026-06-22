@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 export default function Admin() {
-  // Use relative API base so dev server proxy handles requests and avoids CORS
-  const API_BASE = '';
+  // Use relative API base by default; override with VITE_API_BASE for separate deployments.
+  const API_BASE = import.meta.env.VITE_API_BASE || '';
   const [pin, setPin] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [trackList, setTrackList] = useState([]);
