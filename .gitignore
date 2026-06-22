@@ -6,3 +6,5 @@ dist/
 .vite/
 .DS_Store
 /.vscode/
+.vercel
+.env*

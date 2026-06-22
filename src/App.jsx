@@ -92,12 +92,12 @@ const services = [
 
 const routes = [
   {
-    flags: ['🇳🇬', '🇳🇱'],
-    title: 'West Africa — Europe',
-    desc: 'Lagos · Tema · Abidjan → Rotterdam · Antwerp · Hamburg',
-    transit: '18 days',
+    flags: ['�🇺', '🇨🇦'],
+    title: 'Europe — Canada',
+    desc: 'Rotterdam · Antwerp · Hamburg → Vancouver · Toronto · Montreal',
+    transit: '12 days',
     freq: 'Weekly',
-    next: 'Jun 24',
+    next: 'Jun 25',
   },
   {
     flags: ['🇨🇳', '🇺🇸'],
@@ -482,9 +482,7 @@ function App() {
                 </div>
                 <button className="btn-login" type="button" onClick={() => { localStorage.removeItem('currentUser'); setCurrentUser(null); navigate('/login'); }}>Logout</button>
               </div>
-            ) : (
-              <button className="btn-login" type="button" onClick={() => navigate('/login')}>Login</button>
-            )}
+            ) : null}
             <button className="btn-track" type="button" onClick={() => document.getElementById('track-input')?.focus()}>
               <Icon name="mapSearch" label="Track icon" /> Track Cargo
             </button>
@@ -526,7 +524,6 @@ function App() {
             {COMPANY_NAME} operates a reliable container shipping network — 200+ ports, 6 continents, weekly sailings, and real-time tracking on every container from door to door.
           </p>
           <div className="hero-btns">
-            <button className="btn-primary" onClick={handleQuote}>Request a Quote</button>
             <button className="btn-ghost" onClick={handleViewSchedules}>View Schedules</button>
           </div>
           <div className="hero-stats">
@@ -677,9 +674,6 @@ function App() {
                 </div>
               ))}
             </div>
-            <button className="btn-primary" style={{ fontSize: 14 }} onClick={handleQuote}>
-              View Container Options
-            </button>
           </div>
           <div className="showcase-photo">
             <img src={VALID_IMAGE_2} alt={`${COMPANY_SHORT} container ship fully loaded`} />
@@ -919,7 +913,6 @@ function App() {
           <h2>Book Cargo Space on the Next Sailing</h2>
           <p>Tell us your cargo size, origin, and destination — our freight desk replies with container options within one business day.</p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button className="btn-primary" onClick={handleQuote}>Request a Quote</button>
             <button className="btn-ghost" onClick={handleViewSchedules}>View Schedules</button>
           </div>
         </div>
@@ -970,6 +963,7 @@ function App() {
           <div className="footer-col">
             <h5>Headquarters</h5>
             <div className="fcont"><Icon name="mapPinSmall" label="Map pin" /><span>Ringstraße 1, 1010 Vienna, Austria</span></div>
+            <div className="fcont"><Icon name="phone" label="Phone" /><span>+1 436 65 2336447</span></div>
             <div className="fcont"><Icon name="mail" label="Mail" /><span>msccargovienna@gmail.com</span></div>
             <div className="fcont"><Icon name="clock" label="Clock" /><span>Mon–Fri 08:00–18:00 ICT<br />24/7 Operations Hotline</span></div>
             <button className="btn-primary" style={{ width: '100%', marginTop: 12, fontSize: 13 }}>Contact Freight Desk</button>
