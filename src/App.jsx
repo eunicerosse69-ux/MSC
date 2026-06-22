@@ -143,7 +143,7 @@ const routes = [
 
 const offices = [
   {
-    flag: '�🇹',
+    flag: '🇦🇹',
     city: 'Vienna, Austria',
     role: '⭐ Global Headquarters',
     address: 'Ringstraße 1, 1010 Vienna, Austria',
