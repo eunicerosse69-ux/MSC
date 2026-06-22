@@ -971,7 +971,6 @@ function App() {
           <div className="footer-col">
             <h5>Headquarters</h5>
             <div className="fcont"><Icon name="mapPinSmall" label="Map pin" /><span>Ringstraße 1, 1010 Vienna, Austria</span></div>
-            <div className="fcont"><Icon name="phone" label="Phone" /><span>+143 665 2336447</span></div>
             <div className="fcont"><Icon name="mail" label="Mail" /><span>msccargovienna@gmail.com</span></div>
             <div className="fcont"><Icon name="clock" label="Clock" /><span>Mon–Fri 08:00–18:00 ICT<br />24/7 Operations Hotline</span></div>
             <button className="btn-primary" style={{ width: '100%', marginTop: 12, fontSize: 13 }}>Contact Freight Desk</button>
